@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pastor list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Es_tesorero_nacional</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pastor in pastors %}
+            <tr>
+                <td><a href="{{ path('pastor_show', { 'id': pastor.id }) }}">{{ pastor.id }}</a></td>
+                <td>{% if pastor.estesoreronacional %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pastor_show', { 'id': pastor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pastor_edit', { 'id': pastor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pastor_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

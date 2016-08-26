@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Envio list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigo</th>
+                <th>Monto</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for envio in envios %}
+            <tr>
+                <td><a href="{{ path('envio_show', { 'id': envio.id }) }}">{{ envio.id }}</a></td>
+                <td>{{ envio.codigo }}</td>
+                <td>{{ envio.monto }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('envio_show', { 'id': envio.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('envio_edit', { 'id': envio.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('envio_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
